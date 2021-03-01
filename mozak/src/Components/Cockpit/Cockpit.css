@@ -1,0 +1,39 @@
+.styleCSS {
+  background-color: green;
+  color: white;
+  font: inherit;
+  border: 1px solid blue;
+  padding: 8px;
+  cursor: 'pointer';
+}
+
+.red {
+  color: red;
+  background-color: gold;
+}
+
+.bold {
+  font-weight: bold;
+  padding: 1rem;
+}
+
+.ajmoo {
+  color: orange;
+}
+
+.styleCSSpokus {
+  color: red;
+  padding: 1rem;
+}
+
+.styleCSSpokus:hover {
+  background-color: antiquewhite;
+  color: gold;
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+
+.zazeleni {
+  background-color: green;
+  color: red;
+}
