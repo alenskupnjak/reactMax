@@ -13,8 +13,9 @@
 # dependencies
 /node_modules
 /mozak/node_modules
-/http-AXIOS/node_modules
+/http-AXIOS-blog/node_modules
 /burger/node_modules
+/routing/node_modules
 
 # profiling files
 chrome-profiler-events.json

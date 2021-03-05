@@ -23,23 +23,23 @@ class Persons extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     console.log('xxxxxxx',nextProps, nextState);
     return true
-    if (nextProps.persons !== this.props.persons || nextProps.autorizacija) {
-      console.log(
-        '%c [Persons.js] 12 shouldComponentUpdate TRUE, DA mijenjam!!!',
-        'color:green',
-        nextProps,
-        nextState
-      );
-      return true;
-    } else {
-      console.log(
-        '%c [Persons.js] 12 shouldComponentUpdate FALSE, NE mijenjam!!!',
-        'color:green',
-        nextProps,
-        nextState
-      );
-      return false;
-    }
+    // if (nextProps.persons !== this.props.persons || nextProps.autorizacija) {
+    //   console.log(
+    //     '%c [Persons.js] 12 shouldComponentUpdate TRUE, DA mijenjam!!!',
+    //     'color:green',
+    //     nextProps,
+    //     nextState
+    //   );
+    //   return true;
+    // } else {
+    //   console.log(
+    //     '%c [Persons.js] 12 shouldComponentUpdate FALSE, NE mijenjam!!!',
+    //     'color:green',
+    //     nextProps,
+    //     nextState
+    //   );
+    //   return false;
+    // }
   }
 
   getSnapshotBeforeUpdate() {

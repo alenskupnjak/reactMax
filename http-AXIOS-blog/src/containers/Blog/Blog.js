@@ -15,7 +15,7 @@ class Blog extends Component {
 
   componentDidMount() {
     axios.get('/posts').then((res) => {
-      const posts = res.data.slice(0, 4);
+      const posts = res.data.slice(0, 8);
       const updatePosts = posts.map((post) => {
         return {
           ...post,
@@ -37,6 +37,7 @@ class Blog extends Component {
     const post = this.state.post.map((data) => {
       return (
         <Post
+          // className='Posts'
           key={data.id}
           title={data.title}
           author={data.author}
@@ -46,13 +47,23 @@ class Blog extends Component {
     });
 
     return (
-      <div>
-        <section className='Posts'>{post}</section>
+      <div  >
+          <header className='Blog'>
+              <nav>
+                <ul>
+                    <li> <a href="/">Home</a> </li>
+                    <li> <a href="/new-post">New Post</a></li>
+                </ul>
+              </nav>
+          </header>
+          <section className='Posts'>
+           {post}
+          </section>
+          <section>
+              <FullPost id={this.state.selectedPostId} />
+           </section>
         <section>
-          <FullPost id={this.state.selectedPostId} />
-        </section>
-        <section>
-          <NewPost />
+           <NewPost />
         </section>
       </div>
     );

@@ -7,7 +7,7 @@ import AuthContent from '../common/auth-context'
 class Personone extends Component {
   constructor(props) {
     super(props);
-    // console.log('%c [Personone.js] 00 rendering...', 'color:yellow', this.props);
+    console.log('%c [Personone.js] 00 rendering...', 'color:yellow', this.props);
   }
 
   // sluzi za prebacivanje komponenata izmedi componenata

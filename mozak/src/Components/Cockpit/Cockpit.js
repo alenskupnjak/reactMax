@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useContext } from 'react';
 import './Cockpit.css';
-import Auxx from '../hoc/Auxx';
+// import Auxx from '../hoc/Auxx';
 import withClassArguments from '../hoc/withClassArguments';
 import AuthContent from '../common/auth-context';
 

@@ -1,10 +1,9 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import './App.css';
 // import Radium, { StyleRoot } from 'radium';
 import Persons from '../Persons/Persons';
 import Cockpit from '../Cockpit/Cockpit';
 import WithClass from '../hoc/WithClass';
-import withClassArguments from '../hoc/withClassArguments';
 import AuthContent from '../common/auth-context';
 
 class App extends Component {
