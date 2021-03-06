@@ -21,3 +21,10 @@
 text-decoration: none;
 color:black
 }
+
+
+.Blog a:hover, 
+.Blog a:active {
+text-decoration: none;
+color:orange
+}
