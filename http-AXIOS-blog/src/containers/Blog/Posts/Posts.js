@@ -33,14 +33,13 @@ export class Posts extends Component {
   };
 
   postSelected = (id) => {
-    console.log(id);
     this.setState({ selectedPostId: id });
     // this.props.history.push( '/posts/' + id );
   };
 
   render() {
-    console.log( this.props.match);
-    console.log( this.props.match.url);
+    // console.log( this.props.match);
+    // console.log( this.props.match.url);
   
     const post = this.state.posts.map((data) => {
       return (
