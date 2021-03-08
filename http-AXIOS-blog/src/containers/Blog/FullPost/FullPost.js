@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import axios from 'axios';
-import axios from '../../axios';
+import axios from '../../../axios';
 
 import './FullPost.css';
 
@@ -9,37 +9,32 @@ class FullPost extends Component {
     loadedPost: null,
   };
 
-
-  
-
   componentDidUpdate() {
     if (this.props.id) {
-      if (!this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id !== this.props.id)) {
-        axios
-          .get(`/posts/${this.props.id}`)
-          .then((res) => {
-            console.log(res);
-            
-            this.setState({ loadedPost: res.data });
-          });
+      if (
+        !this.state.loadedPost ||
+        (this.state.loadedPost && this.state.loadedPost.id !== this.props.id)
+      ) {
+        axios.get(`/posts/${this.props.id}`).then((res) => {
+          console.log(res);
+
+          this.setState({ loadedPost: res.data });
+        });
       }
     }
   }
 
-  deletePost= () => {
+  deletePost = () => {
     console.log('DELETE', this.props);
-    axios
-    .delete(`/posts/${this.props.id}`)
-    .then((res) => {
+    axios.delete(`/posts/${this.props.id}`).then((res) => {
       console.log(res);
     });
-
-  }
+  };
 
   render() {
     let post = <p style={{ textAlign: 'center' }}>Select post!</p>;
     if (this.props.id) {
-      post = <p style={{ textAlign: 'center' }}>Laoding!</p>;
+      post = <p style={{ textAlign: 'center' }}>Loading!</p>;
     }
     if (this.state.loadedPost) {
       post = (
@@ -47,7 +42,9 @@ class FullPost extends Component {
           <h1>{this.state.loadedPost.title}</h1>
           <p>{this.state.loadedPost.body}</p>
           <div className='Edit'>
-            <button onClick={this.deletePost} className='Delete'>Delete</button>
+            <button onClick={this.deletePost} className='Delete'>
+              Delete
+            </button>
           </div>
         </div>
       );

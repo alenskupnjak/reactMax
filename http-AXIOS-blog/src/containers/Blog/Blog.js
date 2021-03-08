@@ -1,51 +1,13 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
-import axios from '../../axios';
+import Posts from './Posts/Posts';
+import { Route } from 'react-router-dom';
 
-import Post from '../../components/Post/Post';
-import FullPost from '../../components/FullPost/FullPost';
-import NewPost from '../../components/NewPost/NewPost';
+// npx react-codemod rename-unsafe-lifecycles
 import './Blog.css';
 
 class Blog extends Component {
-  state = {
-    post: [],
-    selectedPostId: null,
-  };
-
-  componentDidMount() {
-    axios.get('/posts').then((res) => {
-      const posts = res.data.slice(0, 8);
-      const updatePosts = posts.map((post) => {
-        return {
-          ...post,
-          author: 'alen',
-        };
-      });
-      this.setState({ post: updatePosts });
-      console.log(res);
-    });
-  }
-
-  postSelected = (id) => {
-    this.setState({ selectedPostId: id });
-  };
 
   render() {
-    console.log(this.state.post);
-
-    const post = this.state.post.map((data) => {
-      return (
-        <Post
-          // className='Posts'
-          key={data.id}
-          title={data.title}
-          author={data.author}
-          clicked={() => this.postSelected(data.id)}
-        />
-      );
-    });
-
     return (
       <div  >
           <header className='Blog'>
@@ -56,15 +18,9 @@ class Blog extends Component {
                 </ul>
               </nav>
           </header>
-          <section className='Posts'>
-           {post}
-          </section>
-          <section>
-              <FullPost id={this.state.selectedPostId} />
-           </section>
-        <section>
-           <NewPost />
-        </section>
+          {/* <Route path="/" exact render={()=><h1>Home</h1>}></Route>
+          <Route path="/" render={()=><h1>Home 2</h1>}></Route> */}
+          <Route path="/" exact component={Posts}></Route>
       </div>
     );
   }
