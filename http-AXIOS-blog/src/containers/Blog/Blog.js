@@ -1,26 +1,53 @@
 import React, { Component } from 'react';
-import Posts from './Posts/Posts';
-import { Route } from 'react-router-dom';
+import { Route, NavLink, Switch } from 'react-router-dom';
 
-// npx react-codemod rename-unsafe-lifecycles
 import './Blog.css';
+// npx react-codemod rename-unsafe-lifecycles
+import Posts from './Posts/Posts';
+
+import NewPost from './NewPost/NewPost';
+
 
 class Blog extends Component {
-
   render() {
     return (
-      <div  >
-          <header className='Blog'>
-              <nav>
-                <ul>
-                    <li> <a href="/">Home</a> </li>
-                    <li> <a href="/new-post">New Post</a></li>
-                </ul>
-              </nav>
-          </header>
-          {/* <Route path="/" exact render={()=><h1>Home</h1>}></Route>
-          <Route path="/" render={()=><h1>Home 2</h1>}></Route> */}
-          <Route path="/" exact component={Posts}></Route>
+      <div>
+        <header className='Blog'>
+          <nav>
+            <ul>
+              <li>
+                {' '}
+                <NavLink
+                  to='/posts/'
+                  exact
+                  activeClassName='moj-active'
+                  activeStyle={{
+                    color: 'green',
+                    textDecoration: 'underline',
+                  }}
+                >
+                  Home
+                </NavLink>{' '}
+              </li>
+              <li>
+                {' '}
+                <NavLink
+                  to={{
+                    pathname: '/new-post/',
+                    hash: 'submit',
+                    search: '?jedan-primjer',
+                  }}
+                >
+                  New Post
+                </NavLink>
+              </li>
+            </ul>
+          </nav>
+        </header>
+        <Switch>
+          <Route path='/new-post' component={NewPost}></Route>
+          <Route path='/posts' component={Posts}></Route>
+        </Switch>
       </div>
     );
   }

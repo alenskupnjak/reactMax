@@ -10,7 +10,7 @@ instance.defaults.headers.common['Autorization'] = 'AUTH TOKEN FROM INSTANCE';
 //  Za REQUEST INSTANCE
 instance.interceptors.request.use(
   (req) => {
-    console.log('interceptors.request', req);
+    console.log('interceptors.REQ', req);
     return req;
   },
   (err) => {
@@ -21,7 +21,7 @@ instance.interceptors.request.use(
 //  Za RESPONSE INSTANCE
 instance.interceptors.response.use(
   (res) => {
-    console.log('interceptors.request', res);
+    console.log('interceptors.RES', res);
     return res;
   },
   (err) => {

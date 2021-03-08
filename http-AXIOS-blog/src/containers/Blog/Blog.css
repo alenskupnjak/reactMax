@@ -16,7 +16,13 @@ color:black
 
 
 .Blog a:hover, 
-.Blog a:active {
+.Blog a:active,
+.Blog a.active {
 text-decoration: none;
 color:orange
+}
+
+.Blog .moj-active {
+text-decoration: none;
+color: blue
 }
