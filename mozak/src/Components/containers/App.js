@@ -23,34 +23,70 @@ class App extends Component {
     otherState: 'some other value',
     showPersons: false,
     showCockpit: true,
+    poredak: 'START',
   };
 
-
-    // (contextType) reserved React word SAMO za classs !!
-    static contextType = AuthContent
-    
-
-  // ova komponenta se rijetko koristi
-  static getDerivedStateFromProps(props, state) {
-    console.log('%c [App.js] 01 getDerivedStateFromProps', 'color:red', props);
-    return state;
-  }
+  // (contextType) reserved React word SAMO za classs !!
+  static contextType = AuthContent;
 
   componentDidMount(props) {
-    console.log('%c [App.js] 03 componentDidMount', 'color:red', props);
+    // componentDidMount() is invoked immediately after a component is mounted (inserted into the tree). Initialization that requires DOM nodes should go here. If you need to load data from a remote endpoint, this is a good place to instantiate the network request.
+    this.setState({ poredak: '03' });
+    console.log(
+      '%c [App.js] 03 componentDidMount',
+      'color:#3498DB',
+      props,
+      this.state.poredak
+    );
   }
 
   componentDidUpdate(props) {
-    console.log('%c [App.js] 04 componentDidUpdate', 'color:red', props);
-    console.log('****',this.context.authenticated);
-
+    // componentDidUpdate() is invoked immediately after updating occurs. This method is not called for the initial render.
+    // Use this as an opportunity to operate on the DOM when the component has been updated.
+    // This is also a good place to do network requests as long as you compare the current props to previous props
+    // (e.g. a network request may not be necessary if the props have not changed).
+    console.log('%c [App.js] 04 componentDidUpdate', 'color:#3498DB', props);
+    console.log('****', this.context.authenticated);
   }
 
+  componentWillUnmount(props) {
+    // componentWillUnmount() is invoked immediately before a component is unmounted and destroyed. 
+    // Perform any necessary cleanup in this method, such as invalidating timers, canceling network requests, 
+    // or cleaning up any subscriptions that were created in componentDidMount().
+    console.log('%c [App.js] 06 componentWillUnmount', 'color:#3498DB', props);
+  }
+
+
+  // *************************************************
+  // ********************************************************
+    // rijetko se koristi
   shouldComponentUpdate(props) {
-    console.log('%c [App.js] 05 shouldComponentUpdate', 'color:red', props);
+    console.log('%c [App.js] 05 shouldComponentUpdate', 'color:#3498DB', props);
     // Ova funkcija mora vratiti vrijednost true je default
     return true;
   }
+  //  rijetko se koristi
+  static getDerivedStateFromProps(props, state) {
+    console.log(
+      '%c [App.js] 01 getDerivedStateFromProps NE KORISTI!!!',
+      'color:#3498DB',
+      props,
+      state
+    );
+    return state;
+  }
+  // rijetko se koristi
+  getSnapshotBeforeUpdate(props) {
+    // this.setState({poredak:'06 - getSnapshotBeforeUpdate'})
+    console.log(
+      '%c [App.js] 06 getSnapshotBeforeUpdate',
+      'color:#3498DB',
+      props,
+      this.state.poredak
+    );
+    return null;
+  }
+
 
   // delete
   deletePersonHandler = (personIndex) => {
@@ -106,14 +142,14 @@ class App extends Component {
   toggleAutorizacija = (e) => {
     console.log(e);
     console.log(this.context.authenticated);
-    this.context.authenticated = !this.context.authenticated
+    this.context.authenticated = !this.context.authenticated;
     // this.setState({ state: this.state });
     this.forceUpdate();
     // izaberiIme.authenticated = !izaberiIme.authenticated
   };
 
   render() {
-    console.log('%c [App.js] 02 Render', 'color:red', this.props);
+    console.log('%c [App.js] 02 Render', 'color:#3498DB', this.props);
     // ako je person true prikazati ce na ekran
     let personsDOM = null;
 
@@ -125,7 +161,7 @@ class App extends Component {
             changed={this.nameChangedHandler}
             clicked={this.deletePersonHandler}
             proba={this.probaFunkcija}
-            autorizacija ={this.context.authenticated}
+            autorizacija={this.context.authenticated}
           ></Persons>
         </div>
       );
@@ -140,7 +176,7 @@ class App extends Component {
             this.setState({ showCockpit: !promjeniStanje });
           }}
         >
-         Sakrij
+          {this.state.showCockpit ? 'Sakrij' : 'Prikazi'}
         </button>
         {this.state.showCockpit ? (
           <Cockpit
@@ -148,7 +184,7 @@ class App extends Component {
             showPersons={this.state.showPersons}
             personsLenght={this.state.persons.length}
             togglePersonsHandler={this.togglePersonsHandler}
-            autorizacija = {this.toggleAutorizacija}
+            autorizacija={this.toggleAutorizacija}
           ></Cockpit>
         ) : null}
         {personsDOM}
@@ -162,4 +198,3 @@ class App extends Component {
 // export default Radium(App);
 export default App;
 // export default withClassArguments(App,'promjeniText');
-

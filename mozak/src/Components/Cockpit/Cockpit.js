@@ -45,6 +45,7 @@ const cockpit = (props) => {
   });
 
   const toggleAutorizacija = (e) => {
+    console.log('%c [cockpit.js] 04 toggleAutorizacija', 'color:magenta');
     console.log(e);
     izaberiIme.authenticated = !izaberiIme.authenticated
     console.log(izaberiIme);
